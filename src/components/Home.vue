@@ -1,16 +1,33 @@
 <template>
-    <p v-border:solid.round.shadow="{width: '10px', color: 'blue'}">{{tempData}}</p>
+    <div>
+        <p v-border:solid.round.shadow="{width: '10px', color: 'blue'}">{{tmpData}}</p>
+        <!-- フィルターの連結は|で繋ぐ -->
+        <!-- 設定したfilterをtitleに適用する -->
+        <h2>{{ title | lowerCase | upperCase }}</h2>
+        <p>{{subTitle | lowerCase}}</p>
+        <p>{{number}}</p>
+        <button @click="number++">+1</button>
+    </div>
 </template>
 
 <script>
-//カスタムディレクティブをローカル登録することもできる
 export default {
     data() {
         return {
-            tmpDta: "hello"
+            tmpData: "hello",
+            title: "Welcome to Tokyo",
+            subTitle: "Tokyo is a great city",
+            number: 0
         };
     },
-    //ローカル登録内ではthis.が使えないので注意する
+    //ローカルでのフィルターの定義方法※valueは必須
+    //thisは使えないので注意
+    // フィルターは再描画を頻発させてしまうリスクがあるためなるべくcomputedを使う方が良い
+    filters: {
+        lowerCase(value){
+            return value.toLowerCase();
+        }
+    },
     directives: {
         border(el, binding){
             el.style.borderWidth = binding.value.width;
