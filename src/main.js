@@ -8,8 +8,12 @@ Vue.config.productionTip = false;
 Vue.component("LikeNumber", LikeNumber);
 //elはディレクティブが紐づくHTML要素を表す※今回はp要素
 Vue.directive("border", function(el, binding) {
-  el.style.border = "solid black 2px";
-  el.style.borderWidth = binding.value;
+  //データを受け取りたいときはbinding.valueで受け取れる
+  //複数データを受け取りたいときは送り側をオブジェクトにして、受け取り側でプロパティを指定して取得する
+  el.style.borderWidth = binding.value.width;
+  el.style.borderColor = binding.value.color;
+  //ディレクティブの引数を取得したいときはargument;をつける
+  el.style.borderStyle = binding.arg;
 });
 
 new Vue({
