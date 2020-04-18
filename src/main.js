@@ -6,8 +6,10 @@ import LikeNumber from "./components/LikeNumber.vue";
 Vue.config.productionTip = false;
 // グローバル登録
 Vue.component("LikeNumber", LikeNumber);
-// フック関数の省略記法 ※bindingとupdateのみ使える
-Vue.direcrive("border",function(el,bindind){
+//elはディレクティブが紐づくHTML要素を表す※今回はp要素
+Vue.directive("border", function(el, binding) {
+  el.style.border = "solid black 2px";
+  el.style.borderWidth = binding.value;
 });
 
 new Vue({
