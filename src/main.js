@@ -10,6 +10,12 @@ Vue.filter("upperCase", function(value) {
   console.log("フィルタ");
   return value.toUpperCase();
 });
+// グローバルミックスインは全てのコンポーネントに適用させるので基本的に使わない※プラグインを作るときくらい
+Vue.mixin({
+  created() {
+    console.log("global mixin");
+  }
+})
 
 new Vue({
   render: h => h(App)
