@@ -10,8 +10,11 @@
 // ミックスインとはコードを再利用するためのもの
 <script>
 import { tokyoNumber } from "@/tokyoNumber";
-
+// オプションが被ったときはコンポーネントが基本的に実行が優先されるが、ライフサイクルフックのみmixinが先に実行される
 export default {
-    mixins: [tokyoNumber]
+    mixins: [tokyoNumber],
+    created () {
+        console.log("created in component")
+    }
 };
 </script>
