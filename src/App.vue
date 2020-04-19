@@ -2,11 +2,20 @@
   <div class="main">
     <button @click="show = !show">切り替え</button>
     <!-- appearはリロードの時も発火させる -->
-    <transition name="fade" appear>
-      <p v-if="show">hello</p>
+    <!-- カスタムトランジションクラスを使用してanimate.cssを実装 -->
+    <transition 
+      enter-active-class="animated bounce" 
+      leave-active-class="animated shake" 
+      appear
+    >
+    <p v-if="show">hello</p>
     </transition>
     <!-- トランジションにtype属性をつける -->
-    <transition name="slide" type="animation" appear>
+    <transition 
+      name="slide" 
+      type="animation" 
+      appear
+    >
 
       <p v-show="show">bye</p>
     </transition>
