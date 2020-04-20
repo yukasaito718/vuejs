@@ -1,8 +1,21 @@
 <template>
   <div class="main">
+    <button @click="myAnimation = 'slide'">Slide</button>
+    <button @click="myAnimation = 'fade'">Fade</button>
+    <p>{{myAnimation}}</p>
     <button @click="show = !show">切り替え</button>
-    <!-- appearはリロードの時も発火させる -->
-    <!-- カスタムトランジションクラスを使用してanimate.cssを実装 -->
+    <!-- mode属性 要素のタイミングをずらす 複数の要素がある場合はつけるとスムーズになる -->
+    <transition name="fade" mode="out-in">
+      <!-- transitionはコンテンツ内のタグが変わった時に発火するため同じタグ同士だと動かない keyを指定することによって違うタグとして判断する -->
+      <p 
+        v-if="show" 
+        key="bye"
+        >さよなら</p>
+      <p 
+        v-else 
+        key="hello"
+        >こんにちは</p>
+    </transition>
     <transition 
       enter-active-class="animated bounce" 
       leave-active-class="animated shake" 
@@ -12,8 +25,7 @@
     </transition>
     <!-- トランジションにtype属性をつける -->
     <transition 
-      name="slide" 
-      type="animation" 
+      :name="myAnimation" 
       appear
     >
 
@@ -26,7 +38,8 @@
 export default {
   data() {
     return {
-      show: true
+      show: true,
+      myAnimation: "slide"
     };
   }
 };
