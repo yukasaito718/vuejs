@@ -2,7 +2,7 @@
   <div style="width: 700px; margin: auto;">
     <nav>
       <!-- アクセスせずにjsのコンポーネントを呼び出してページを表示させるリンクの書き方 -->
-      <!-- //exact urlが完全一致の時activeにする -->
+      <!-- //urlが完全一致の時activeにする -->
       <router-link 
         to="/" 
         active-class="link--active"

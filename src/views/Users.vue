@@ -7,19 +7,12 @@
         <!-- paramsを取得できる -->
         <!-- ライフサイクルフックが呼ばれないのでwatchをつける -->
         <h1>User No. {{ id }}</h1>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["id"],
-    watch: {
-        //$routeが変わったら動く(未来のページ、過去のページ)
-        $route(to, from) {
-            console.log(to);
-            console.log(from);
-            
-        }
-    }
+    props: ["id"]
 }
 </script>
