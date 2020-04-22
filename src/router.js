@@ -7,6 +7,11 @@ import Users from "./views/Users.vue"
 Vue.use(Router);
 
 export default new Router({
+    //開発環境のみ/#/コンポーネント名/でアクセスできる
+    mode: 'history',
     // URLとコンポーネントをマッピングする
-    routes: [{path: '/', component: Home}, {path: '/users', component: Users}]
+    routes: [
+        { path: "/", component: Home },
+        { path: "/users/:id", component: Users, props: true }
+    ]
 });
