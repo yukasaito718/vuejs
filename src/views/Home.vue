@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Home</h1>
-        <button @click="toUsers">usersのページへ</button>
+    <h3>Home</h3>
+    <button @click="toUsers">Usersのページに行く</button>
     </div>
 </template>
 
@@ -15,5 +15,5 @@ export default {
             });
         }
     }
-}
+};
 </script>
